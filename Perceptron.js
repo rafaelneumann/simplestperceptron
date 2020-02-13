@@ -28,6 +28,5 @@ class Perceptron {
 	
 	print_weights() {
 		console.log(this.weights);
-	}
-	
+	}	
 }
