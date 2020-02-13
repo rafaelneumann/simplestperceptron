@@ -3,7 +3,7 @@ class Point {
 		this.x = random(0, 1) * side;
 		this.y = random(0, 1) * side;
 		
-		if (this.x > this.y) {
+		if (this.x * y_func[0] + y_func[1] > this.y) {
 			this.label = 1;
 		} else {
 			this.label = -1;
@@ -22,6 +22,7 @@ class Point {
 var p;
 var points = [];
 var side = 400;
+var y_func = [3, 0];
 
 function setup() {
 	// Initialize the perceptron
@@ -56,7 +57,10 @@ function draw() {
 	}
 	
 	// Reference line
-	line(0, 0, side, side);
+	//line(0, y_func[1] * side, 1 * side, ((1 - y_func[1]) / y_func[0]) * side);
+	
+	line(0, y_func[1] * side, 1 * side, (y_func[0] * 1 + y_func[1]) * side);
+	
 }
 
 function mousePressed() {
@@ -67,7 +71,5 @@ function mousePressed() {
 		p.train(item.get_inputs(), item.label);
 	}
 	
-	console.log(p.print_weights());
-	
-	
+	console.log(p.print_weights());	
 }
